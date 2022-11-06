@@ -60,7 +60,7 @@ def data_normalization(data):
     global uk_carbon_emission
     global maxico_carbon_emission
     global ukrine_carbon_emission
-    global india_carbon_emission
+    global france_carbon_emission
     global year
     
     # getting data of five year  and storing in lists
@@ -74,7 +74,7 @@ def data_normalization(data):
     uk_carbon_emission=[year_fifteen.iloc[180],year_sixteen.iloc[180],year_seventeen.iloc[180],year_eighteen.iloc[180],year_nineteen.iloc[180]]
     maxico_carbon_emission=[year_fifteen.iloc[111],year_sixteen.iloc[111],year_seventeen.iloc[111],year_eighteen.iloc[111],year_nineteen.iloc[111]]
     ukrine_carbon_emission=[year_fifteen.iloc[178],year_sixteen.iloc[178],year_seventeen.iloc[178],year_eighteen.iloc[178],year_nineteen.iloc[178]]
-    india_carbon_emission=[year_fifteen.iloc[60],year_sixteen.iloc[60],year_seventeen.iloc[60],year_eighteen.iloc[60],year_nineteen.iloc[60]]
+    france_carbon_emission=[year_fifteen.iloc[60],year_sixteen.iloc[60],year_seventeen.iloc[60],year_eighteen.iloc[60],year_nineteen.iloc[60]]
     
     # define years
     year=['2015','2016','2017','2018','2019']
@@ -91,10 +91,11 @@ def data_visualization(data,type):
         plt.plot(year, uk_carbon_emission,label=data['Country Name'].iloc[180])
         plt.plot(year, maxico_carbon_emission,label=data['Country Name'].iloc[111])
         plt.plot(year, ukrine_carbon_emission,label=data['Country Name'].iloc[178])
-        plt.plot(year, india_carbon_emission,label=data['Country Name'].iloc[60])
+        plt.plot(year, france_carbon_emission,label=data['Country Name'].iloc[60])
         
     
         # we are defining the label
+        plt.title('Carbon Emission Data For Last Five Year in KiloTon')
         plt.xlabel("Year")
         plt.ylabel("Carbon Emission")
         
@@ -109,8 +110,9 @@ def data_visualization(data,type):
     elif type=="pie":
         
         # here we ploting pir chart graph
-        plt.pie([carbon_emission_avg(uk_carbon_emission),carbon_emission_avg(maxico_carbon_emission),carbon_emission_avg(ukrine_carbon_emission),carbon_emission_avg(india_carbon_emission),],labels=["UK","Mexico","Ukrine","India"])
+        plt.pie([carbon_emission_avg(uk_carbon_emission),carbon_emission_avg(maxico_carbon_emission),carbon_emission_avg(ukrine_carbon_emission),carbon_emission_avg(france_carbon_emission),],labels=["UK","Mexico","Ukrine","France"])
         
+        plt.title('Average Carbon Emission Data For Last Five Year in KiloTon')
         # here we show pir graph
         plt.show()
         
@@ -118,17 +120,17 @@ def data_visualization(data,type):
     elif type=="bar":
         
         # here we get avg of countries and add in average list
-       average = [carbon_emission_avg(uk_carbon_emission),carbon_emission_avg(maxico_carbon_emission),carbon_emission_avg(ukrine_carbon_emission),carbon_emission_avg(india_carbon_emission),]
+       average = [carbon_emission_avg(uk_carbon_emission),carbon_emission_avg(maxico_carbon_emission),carbon_emission_avg(ukrine_carbon_emission),carbon_emission_avg(france_carbon_emission),]
        
        # here we define names of bars
-       bars = ('UK', 'Mexico', 'Ukrine', 'India')
+       bars = ('UK', 'Mexico', 'Ukrine', 'France')
        x_pos = np.arange(len(bars))
  
        # Create bars and choose color
        plt.bar(x_pos, average, color = (0.5,0.1,0.5,0.2))
  
        # Add title and axis names
-       plt.title('Carbon Emission Data For Last Five Year in Kilo Ton')
+       plt.title('Average Carbon Emission Data For Last Five Year in KiloTon')
        plt.xlabel('Countries')
        plt.ylabel('Carbon Emission')
  
@@ -147,7 +149,7 @@ if __name__=="__main__":
     uk_carbon_emission=[]
     maxico_carbon_emission=[]
     ukrine_carbon_emission=[]
-    india_carbon_emission=[]
+    france_carbon_emission=[]
     year=[]
     
     # here we get data from link
